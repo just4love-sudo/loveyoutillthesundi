@@ -1,0 +1,586 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: #fcebef url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  color: #6b2d37;
+}
+
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  background-color: #fde8ed;
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 192, 203, 0.3);
+  border: 1px solid #f4a7b9;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  text-align: center;
+  color: #d94e6c;
+  margin-bottom: 30px;
+  border-bottom: 2px dashed #f4a7b9;
+  padding-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  color: #6b2d37;
+}
+
+nav {
+  text-align: center;
+  margin-top: 40px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #d94e6c;
+  font-weight: bold;
+  margin: 0 12px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  border: 1px solid #f4a7b9;
+  background-color: #f9d4db;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease 2.5s forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.poem-list, .letter-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2rem;
+}
+
+.poem-list li, .letter-list li {
+  margin-bottom: 1rem;
+}
+
+.poem-list a, .letter-list a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #d94e6c;
+  font-size: 1.1rem;
+}
+
+.poem-list a:hover, .letter-list a:hover {
+  text-decoration: underline;
+  color: #b8405d;
+}
+
+.intro {
+  font-style: italic;
+  color: #b77284;
+  margin-bottom: 1.5rem;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.gallery img.zoomable {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  cursor: zoom-in;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.gallery img.zoomable:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+.gallery-grid img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
+}
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+.art-grid img {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.art-grid img:hover {
+  transform: scale(1.05);
+}
+
+.floating-svg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-svg svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -40px;
+  opacity: 0.4;
+  animation: floatSvg linear infinite;
+}
+
+@keyframes floatSvg {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.side-decor {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.side-decor.left {
+  left: 0;
+  background: url('data:image/svg+xml;utf8,<svg fill="pink" viewBox="0 0 100 800" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 Q70 100 30 200 Q70 300 30 400 Q70 500 30 600 Q70 700 50 800"/></svg>') repeat-y;
+  background-size: contain;
+}
+
+.side-decor.right {
+  right: 0;
+  background: url('data:image/svg+xml;utf8,<svg fill="pink" viewBox="0 0 100 800" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 Q30 100 70 200 Q30 300 70 400 Q30 500 70 600 Q30 700 50 800"/></svg>') repeat-y;
+  background-size: contain;
+}
+
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(#fff, #f8c7d0);
+  animation: sparkleFade 1s ease-out forwards;
+  opacity: 0.8;
+}
+
+@keyframes sparkleFade {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.love-note {
+  position: fixed;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #f48fb1;
+  background: rgba(255, 240, 245, 0.65); /* soft warm pink box */
+  border: 1px solid #f8c7d0;
+  padding: 8px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 12px rgba(248, 199, 208, 0.4);
+  opacity: 0;
+  animation: floatNote 14s ease-in-out infinite;
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  max-width: 200px;
+  text-shadow: 0 0 2px #f5b7c2;
+}
+
+
+@keyframes floatNote {
+  0%   { transform: translateY(0); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(-50px); opacity: 0; }
+}
+
+.glow-orb {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8c7d0 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.glow-orb.top-left { top: 0; left: 0; }
+.glow-orb.bottom-right { bottom: 0; right: 0; }
+
+.butterfly {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+  animation: butterflyFloat 18s ease-in-out infinite;
+}
+
+@keyframes butterflyFloat {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-60px) translateX(80px) rotate(20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) translateX(160px) rotate(0deg);
+    opacity: 0.6;
+  }
+}
+
+.side-deco {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  opacity: 0.06;
+  background-repeat: repeat-y;
+  background-size: 80px auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.side-deco.left {
+  left: 100px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23f4a7b9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 512"><path d="M32 32c0-8 16-8 16 0s-16 24-16 32 16 24 16 32-16 24-16 32 16 24 16 32-16 24-16 32 16 24 16 32-16 24-16 32 16 24 16 32"/></svg>');
+}
+
+.side-deco.right {
+  right: 100px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23f4a7b9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 512"><path d="M32 32c0-8 16-8 16 0s-16 24-16 32 16 24 16 32-16 24-16 32 16 24 16 32-16 24-16 32 16 24 16 32-16 24-16 32 16 24 16 32"/></svg>');
+}
+
+.cursor-sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #fff, #f8c7d0);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  animation: sparkleFade 0.5s linear forwards;
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: #f8c7d0;
+  transform: rotate(45deg);
+  animation: floatHeart 8s linear infinite;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #f8c7d0;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.floating-svg-heart {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  top: -40px;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+  animation: floatSvgHeart linear infinite;
+}
+
+@keyframes floatSvgHeart {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.glow {
+  filter: drop-shadow(0 0 8px #f7accf);
+}
+
+.cursor-heart-svg {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: heartFade 1.2s ease-out forwards;
+  filter: drop-shadow(0 0 4px #f7accf);
+  opacity: 0.8;
+}
+
+@keyframes heartFade {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.8) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* ✨ Extra floating sparkles */
+.sparkle-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(#fff, #f8c7d0);
+  opacity: 0.5;
+  animation: sparkleDrift 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sparkleDrift {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(30px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 🍃 Floating petals */
+.petal {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(#fbc2d7, #f8c7d0);
+  border-radius: 50% 50% 50% 0;
+  opacity: 0.5;
+  transform: rotate(45deg);
+  animation: petalFall 15s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 🌟 Glow gradient orb (like soft background ambiance) */
+.orb {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8c7d0 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 💌 Floating envelope icon (love letter) */
+.love-envelope {
+  position: fixed;
+  width: 20px;
+  height: 14px;
+  background-color: #f8c7d0;
+  border: 2px solid #b05465;
+  border-radius: 3px;
+  transform: rotate(-10deg);
+  animation: floatEnvelope 25s linear infinite;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.love-envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 49%, #b05465 50%, transparent 51%);
+}
+
+@keyframes floatEnvelope {
+  0% {
+    transform: translateY(0) translateX(0) rotate(-10deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px) rotate(20deg);
+    opacity: 0;
+  }
+}
+/* 🌿 Visible side vines */
+.side-fill {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3; /* was 0.08 */
+  background-repeat: repeat-y;
+  background-size: 60px auto;
+}
+
+.side-fill.left {
+  left: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23f8c7d0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 512"><path d="M32 0c0 48-16 48-16 96s16 48 16 96-16 48-16 96 16 48 16 96-16 48-16 96 16 48 16 96"/></svg>');
+}
+
+.side-fill.right {
+  right: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23f8c7d0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 512"><path d="M32 0c0 48-16 48-16 96s16 48 16 96-16 48-16 96 16 48 16 96-16 48-16 96 16 48 16 96"/></svg>');
+}
+
+/* 💫 Glowing side orb - more intense and closer */
+.side-orb {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8c7d0 0%, transparent 70%);
+  filter: blur(60px);
+  opacity: 0.3; /* was 0.08 */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ✨ More visible sparkles */
+.side-sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(white, #f8c7d0);
+  opacity: 0.6; /* was 0.4 */
+  animation: driftSparkle 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes driftSparkle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.4);
+    opacity: 0;
+  }
+}
