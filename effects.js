@@ -72,7 +72,9 @@ const loveQuotes = [
   "You're my favorite place.",
   "Loving you feels like breathing.",
   "You're my life.",
-  "Laaibah you're amazing."
+  "Laaibah you're amazing.",
+  "I am sorry.",
+  "I love you."
 ];
 
 // randomly position the notes along the left or right
