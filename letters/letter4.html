@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>A Letter that might not reach you.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #0f0f10, #1a1b1f);
+      background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+      background-size: cover;
+      font-family: 'EB Garamond', serif;
+      color: #f1eae7;
+      line-height: 1.8;
+    }
+
+    .letter-wrapper {
+      background-color: rgba(28, 27, 29, 0.92);
+      border: 1px solid #a89184;
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      max-width: 800px;
+      margin: 4rem auto;
+      width: 90%;
+      box-shadow: 0 0 60px rgba(255, 220, 210, 0.08), 0 0 15px rgba(255, 220, 210, 0.04) inset;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+      font-size: 3rem;
+      color: #dcc2b6;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 3px rgba(255, 220, 210, 0.1);
+    }
+
+    .letter p,
+    .signature,
+    .book-title {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s ease;
+    }
+
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .letter p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      color: #f0e6e2;
+    }
+
+    .signature {
+      text-align: right;
+      font-style: italic;
+      margin-top: 2rem;
+      color: #ceb1a4;
+    }
+
+    .book-title {
+      text-align: right;
+      font-size: 1rem;
+      font-style: italic;
+      color: #9f8680;
+    }
+
+    .back-button {
+      display: block;
+      margin: 3rem auto 1rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      color: #f4f4f4;
+      background: transparent;
+      border: 1px solid #a38c81;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #ffffff15;
+      color: #ffffff;
+      border-color: #d6c0b2;
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <h1>A Letter I Needed to Say</h1>
+    <div class="letter" id="letterContent">
+      <p>Hey,</p>
+      <p>I never really knew how to treat you like a princess online. I tried, I swear I did. But I never figured out how to make you feel how much I cared through a screen. The words always fell short, like they couldn’t stretch far enough to hold what I meant. I didn’t know how to give you what you deserved in that space. And maybe I never quite did.</p>
+      <p>After you, everyone else just… blurred. I looked at other girls and couldn’t feel a thing. None of them ever seemed right. You had already changed the way I saw the world. It was like you ruined it, beautifully. Because no one else ever looked the same after you.</p>
+      <p>I cried over you more than I’ve ever cried over anything. I didn’t know I had that much inside me. You broke something open in me, and it never fully closed. And even though it’s a stupid daydream now, I know that if we had ever gotten married, I wouldn’t have made it through the vows without breaking down. You would’ve walked toward me and I would’ve lost it. Completely.</p>
+      <p>I wanted something lasting with you. Something to build, slow and solid. I used to imagine us having kids who’d groan every time we kissed in front of them. I wanted that kind of love. Not flashy, not perfect. Just real. Something worn in and warm. Something people could feel from the outside.</p>
+      <p>I only ever wanted you. That’s the truth. I didn’t want the world. I didn’t care about other options or chances or anything else. Just you. It always came back to you.</p>
+      <p>You talked a lot. God, you talked so much. And somehow, it was never too much. I wanted to hear every single thing, even if I’d heard it before. Even the nonsense. Your voice never bored me. It was comfort.</p>
+      <p>I was so proud of you. Still am, if I’m honest. You went through hell and still kept going. You didn’t fold. You made me want to be better. Just by being you.</p>
+      <p>You were always the one I told things I didn’t tell anyone else. The one I said, “I probably shouldn’t be saying this,” and then said it anyway. You were the safest place I had, even when things were falling apart.</p>
+      <p>And now, maybe the only thing left to do is write it all down. I don’t know if I’ll ever let anyone read it, but I need somewhere to put it all. Somewhere to bleed it out, because it’s still inside me, and I don’t know where else to put it.</p>
+      <p>So maybe one day, this will be a book. Or maybe just scribbled notes no one ever sees. But you’ll be in every word of it. Even if your name never shows up, every page will echo you.</p>
+    </div>
+    <p class="signature" id="signature">– Volon</p>
+    <p class="book-title" id="bookTitle">Book Title: The Things I Loved and Lost Anyway</p>
+    <a href="/letters.html" class="back-button">← Back to Letters</a>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const paragraphs = document.querySelectorAll('#letterContent p');
+      const signature = document.getElementById('signature');
+      const bookTitle = document.getElementById('bookTitle');
+
+      paragraphs.forEach((p, index) => {
+        setTimeout(() => {
+          p.classList.add('visible');
+        }, index * 400);
+      });
+
+      setTimeout(() => {
+        signature.classList.add('visible');
+      }, paragraphs.length * 400 + 300);
+
+      setTimeout(() => {
+        bookTitle.classList.add('visible');
+      }, paragraphs.length * 400 + 800);
+    });
+  </script>
+</body>
+</html>
